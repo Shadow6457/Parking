@@ -6,7 +6,10 @@ const int LDR4 = A0;
 
 //Variables 
 int Valor_LDR1, Valor_LDR2, Valor_LDR3, Valor_LDR4;
-
+int llindar_LDR1 = 700;
+int llindar_LDR2 = 600;
+int llindar_LDR3 = 700;
+int llindar_LDR4 = 400;
 void setup() 
 {
   pinMode(LDR1, INPUT);
