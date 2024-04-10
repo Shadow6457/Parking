@@ -7,12 +7,12 @@ const int LedVentrada = 2;
 const int LedRentrada = 3;
 const int LedVerde1 = 5;
 const int LedRojo1 = 4;
-const int LedVerde2 = 6;
-const int LedRojo2 = 7;
-const int LedVerde3 = 8;
-const int LedRojo3 = 9;
-const int LedVerde4 = 10;
-const int LedRojo4 = 11;
+const int LedVerde2 = 7;
+const int LedRojo2 = 6;
+const int LedVerde3 = 9;
+const int LedRojo3 = 8;
+const int LedVerde4 = 11;
+const int LedRojo4 = 10;
 
 //Variables 
 int Valor_LDR1, Valor_LDR2, Valor_LDR3, Valor_LDR4;
@@ -20,6 +20,7 @@ int llindar_LDR1 = 700;
 int llindar_LDR2 = 600;
 int llindar_LDR3 = 700;
 int llindar_LDR4 = 400;
+
 void setup() 
 {
   pinMode(LDR1, INPUT);
@@ -68,5 +69,34 @@ void loop()
     digitalWrite(LedVerde1,HIGH);
     digitalWrite(LedRojo1,LOW);
   } 
-  
+  if(Valor_LDR2 > llindar_LDR2 )
+  {
+   digitalWrite(LedRojo2,HIGH);
+   digitalWrite(LedVerde2,LOW);
+  }
+  else 
+  {
+   digitalWrite(LedRojo2,LOW);
+   digitalWrite(LedVerde2,HIGH);
+  }
+  if(Valor_LDR3 > llindar_LDR3)
+  {
+   digitalWrite(LedRojo3,HIGH);
+   digitalWrite(LedVerde3,LOW);
+  }
+  else 
+  {
+   digitalWrite(LedRojo3,LOW);
+   digitalWrite(LedVerde3,HIGH);
+  }
+  if(Valor_LDR4 > llindar_LDR4)
+  {
+   digitalWrite(LedRojo4,HIGH);
+   digitalWrite(LedVerde4,LOW);
+  }
+  else
+  {
+   digitalWrite(LedRojo4,LOW);
+   digitalWrite(LedVerde4,HIGH);
+  }
 }
