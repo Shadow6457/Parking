@@ -3,6 +3,8 @@ Servo Servo1;
 
 const int Polsador_Ext=A0;
 const int Polsador_Int=A5;
+const int LED_PLAZAS;
+const int LED_LLENO;
 const int LDR_Entrada= A8;
 const int LDR_Salida= A9;
 
