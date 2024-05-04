@@ -185,7 +185,7 @@ void loop()
 
     while(Valor_LDR_Entrada > 600 || Valor_LDR_Salida > 600) //Mientras el valor de los LDR's es mas grande que el de la variable que hemos creado
     {
-    Servo1.Write(145); //Mantén el servomotor a 145º
+    Servo1.write(145); //Mantén el servomotor a 145º
     Valor_LDR_Entrada=analogRead(LDR_Entrada); //Leemos el valor de los LDR's y los almacenamos en la variable 
     Valor_LDR_Salida=analogRead(LDR_Salida);
     }
@@ -202,7 +202,7 @@ void loop()
 
     while(Valor_LDR_Entrada > 600 || Valor_LDR_Salida > 600) //Mientras el valor de los LDR's es mas grande que el de la variable que hemos creado
     {
-     Servo1.Write(145); //Mantén el servomotor a 145º
+     Servo1.write(145); //Mantén el servomotor a 145º
     Valor_LDR_Salida=analogRead(LDR_Salida); //Leemos el valor de los LDR's y los almacenamos en la variable 
     Valor_LDR_Entrada=analogRead(LDR_Entrada);
     }

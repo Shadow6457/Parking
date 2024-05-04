@@ -38,6 +38,8 @@ int llindar_LDR3 = 700;
 int llindar_LDR4 = 400;
 int Valor_LDR_Entrada = 700;
 int Valor_LDR_Salida = 700;
+int Valor_LedVentrada;
+int Valor_LedRentrada;
 
 int Valor_Polsador_Ext; //Creamos Variables para almacenar el valor de los Pulsadores
 int Valor_Polsador_Int;
@@ -159,17 +161,47 @@ void loop()
    digitalWrite(LedVerde4,HIGH); //Enciende el LED verde
   }
 
+    if(numero_coches==4) //Si el numero de coches es igual a 4
+  {
+    digitalWrite(LedRentrada,HIGH); //Enciende el LED rojo de entrada
+    digitalWrite(LedVentrada,LOW); //Apaga el LED verde de entrada
+  }
+  else //sino
+  {
+    digitalWrite(LedRentrada,LOW); //Apaga el LED rojo de entrada
+    digitalWrite(LedVentrada,HIGH); // Enciende el LED verde de entrada
+  }
+  
+  Valor_LedVentrada=digitalRead(LedVentrada); //Leemos el valor de los LED's y los almacenamos en la variable
+  Valor_LedRentrada=digitalRead(LedRentrada);
+
   if(Valor_LDR_Entrada > 600 && Valor_Polsador_Ext == LOW){ //Si el valor del LDR es mas grande que el de la variable que hemos creado i El valor del polsador es igual a 0
     Servo1.write(145); //Pon el servo a 145º (Abre la Puerta)
     Valor_LDR_Entrada=analogRead(LDR_Entrada); //Leemos el valor de los LDR y los almacenamos en la variable
-    delay(5000); //Esperamos 5s
+    Valor_LDR_Salida=analogRead(LDR_Salida);
+
+    while(Valor_LDR_Entrada > 600 || Valor_LDR_Salida > 600) //Mientras el valor de los LDR's es mas grande que el de la variable que hemos creado
+    {
+    Servo1.write(145); //Mantén el servomotor a 145º
+    Valor_LDR_Entrada=analogRead(LDR_Entrada); //Leemos el valor de los LDR's y los almacenamos en la variable 
+    Valor_LDR_Salida=analogRead(LDR_Salida);
+    }
   }
-  
+
+  Valor_LedVentrada=digitalRead(LedVentrada); //Leemos el valor de los LED's y los almacenamos en la variable
+  Valor_LedRentrada=digitalRead(LedRentrada);
+
   if(Valor_LDR_Salida > 600 && Valor_Polsador_Int == LOW){ //Si el valor del LDR es mas grande que el de la variable que hemos creado i El valor del polsador es igual a 0
     Servo1.write(145); //Pon el servo a 145º (Abre la puerta)
     Valor_LDR_Salida=analogRead(LDR_Salida); //Leemos el valor de los LDR y los almacenamos en la variable
-    delay(5000); //Esperamos 5s
-    
+    Valor_LDR_Entrada=analogRead(LDR_Entrada);
+
+    while(Valor_LDR_Entrada > 600 || Valor_LDR_Salida > 600) //Mientras el valor de los LDR's es mas grande que el de la variable que hemos creado
+    {
+     Servo1.write(145); //Mantén el servomotor a 145º
+    Valor_LDR_Salida=analogRead(LDR_Salida); //Leemos el valor de los LDR's y los almacenamos en la variable 
+    Valor_LDR_Entrada=analogRead(LDR_Entrada);
+    }
   }
   
 }
